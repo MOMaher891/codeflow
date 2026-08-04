@@ -34,7 +34,7 @@
         <!-- Project Hero Block -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
             <!-- Left Info Panel -->
-            <div class="lg:col-span-6 space-y-6">
+            <div data-aos="fade-right" class="lg:col-span-6 space-y-6">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-cyan-400 shadow-sm">
                     <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
                     {{ __($project->category) }}
@@ -104,14 +104,14 @@
                 $slides = array_merge([$project->thumbnail], $project->images ?? []);
                 $slides = array_values(array_unique(array_filter($slides)));
             @endphp
-            <div class="lg:col-span-6 relative">
+            <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-6 relative">
                 <!-- Glowing Outer Rings -->
                 <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-purple-600/10 rounded-[36px] blur-[20px] pointer-events-none"></div>
                 
                 <div class="relative bg-slate-900 border border-slate-800 rounded-[32px] overflow-hidden shadow-2xl p-2"
                      x-data="{ 
                         activeSlide: 0, 
-                        slides: @json($slides),
+                        slides: {{ json_encode($slides) }},
                         next() {
                             this.activeSlide = (this.activeSlide + 1) % this.slides.length;
                         },
@@ -166,7 +166,7 @@
 
         <!-- Pricing & Subscription Tiers Grid -->
         <div class="space-y-12">
-            <div class="text-center max-w-3xl mx-auto space-y-4">
+            <div data-aos="fade-up" class="text-center max-w-3xl mx-auto space-y-4">
                 <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">{{ __('Pricing & Plans') }}</h2>
                 <p class="text-3xl sm:text-4xl font-bold text-white">{{ __('Choose Your Licensing Option') }}</p>
                 <p class="text-slate-500 text-sm">
@@ -175,7 +175,7 @@
             </div>
 
             @if(empty($project->plans) || count($project->plans) === 0)
-                <div class="bg-[#0b132b]/20 border border-slate-900 rounded-3xl p-12 text-center text-slate-500">
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-[#0b132b]/20 border border-slate-900 rounded-3xl p-12 text-center text-slate-500">
                     <p class="text-base font-semibold text-white">{{ __('Plans Custom-Tailored on Request') }}</p>
                     <p class="text-sm mt-1 max-w-md mx-auto">{{ __('Pricing plans for this system are structured based on scope and deployment needs. Contact us directly to configure details.') }}</p>
                     
@@ -201,7 +201,7 @@
                             $waUrl = "https://wa.me/" . $cleanPhone . "?text=" . urlencode($waMessage);
                         @endphp
                         
-                        <div class="group relative rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 {{ $isPopular ? 'bg-slate-900/60 border-2 border-cyan-400 shadow-2xl scale-[1.03] lg:scale-[1.05] z-10' : 'bg-slate-900/20 border border-slate-800/80 hover:border-slate-700' }}">
+                        <div data-aos="fade-up" data-aos-delay="{{ (($loop->index % 3) + 1) * 100 }}" class="group relative rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 {{ $isPopular ? 'bg-slate-900/60 border-2 border-cyan-400 shadow-2xl scale-[1.03] lg:scale-[1.05] z-10' : 'bg-slate-900/20 border border-slate-800/80 hover:border-slate-700' }}">
                             
                             @if($isPopular)
                                 <!-- Glow header tag -->

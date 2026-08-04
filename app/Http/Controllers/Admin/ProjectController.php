@@ -95,7 +95,14 @@ class ProjectController extends Controller
     {
         // Convert the tech stack array back to comma-separated string for the form
         $techStackString = implode(', ', $project->tech_stack ?? []);
-        return view('admin.projects.edit', compact('project', 'techStackString'));
+
+        // Pre-format features for the plans widget
+        $plans = array_map(function($plan) {
+            $plan['features_input'] = implode(', ', $plan['features'] ?? []);
+            return $plan;
+        }, $project->plans ?? []);
+
+        return view('admin.projects.edit', compact('project', 'techStackString', 'plans'));
     }
 
     /**

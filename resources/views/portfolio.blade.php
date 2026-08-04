@@ -12,23 +12,23 @@
         <!-- Left Column: Copy & CTAs -->
         <div class="lg:col-span-7 space-y-8 text-center lg:ltr:text-left lg:rtl:text-right">
             <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold tracking-wide text-cyan-400">
+            <div data-aos="fade-up" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold tracking-wide text-cyan-400">
                 <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                 {{ __('Now Booking Projects for Q3/Q4') }}
             </div>
 
             <!-- Title -->
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 data-aos="fade-up" data-aos-delay="100" class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
                 {!! __('Crafting High-End <br> Digital Ecosystems <br> for Tech Leaders.') !!}
             </h1>
 
             <!-- Subtitle -->
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto lg:ltr:mr-auto lg:ltr:ml-0 lg:rtl:ml-auto lg:rtl:mr-0">
+            <p data-aos="fade-up" data-aos-delay="200" class="text-slate-400 text-lg max-w-2xl mx-auto lg:ltr:mr-auto lg:ltr:ml-0 lg:rtl:ml-auto lg:rtl:mr-0">
                 {{ __('CodeFlow is a premium software boutique specializing in bespoke web development, custom system architectures, and stunning mobile apps built to scale.') }}
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <a href="#projects" class="w-full sm:w-auto text-center px-8 py-4 rounded-2xl font-bold text-sm text-slate-950 bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-400 hover:opacity-90 active:scale-[0.98] shadow-lg shadow-cyan-500/20 transition-all duration-300">
                     {{ __('Explore Our Work') }}
                 </a>
@@ -38,7 +38,7 @@
             </div>
             
             <!-- Features Row -->
-            <div class="pt-8 border-t border-slate-900 grid grid-cols-3 gap-6 max-w-md mx-auto lg:ltr:mr-auto lg:ltr:ml-0 lg:rtl:ml-auto lg:rtl:mr-0 ltr:text-left rtl:text-right">
+            <div data-aos="fade-up" data-aos-delay="400" class="pt-8 border-t border-slate-900 grid grid-cols-3 gap-6 max-w-md mx-auto lg:ltr:mr-auto lg:ltr:ml-0 lg:rtl:ml-auto lg:rtl:mr-0 ltr:text-left rtl:text-right">
                 <div>
                     <h4 class="text-xl font-bold text-white">99%</h4>
                     <p class="text-xs text-slate-500 mt-1">{{ __('Client Satisfaction') }}</p>
@@ -55,31 +55,70 @@
         </div>
 
         <!-- Right Column: Interactive Tech Visual Mockup -->
-        <div class="lg:col-span-5 hidden lg:block relative">
+        <div data-aos="zoom-in-left" data-aos-delay="350" class="lg:col-span-5 hidden lg:block relative">
             <div class="relative w-full aspect-square max-w-[450px] mx-auto">
-                <!-- Glowing Outer Rings -->
-                <div class="absolute inset-0 border border-cyan-500/10 rounded-full animate-spin [animation-duration:40s]"></div>
-                <div class="absolute inset-8 border border-purple-500/10 rounded-full animate-spin [animation-duration:25s] [animation-direction:reverse]"></div>
+                <!-- Glowing Outer Rings (Dashed to make rotation visible) -->
+                <div class="absolute inset-0 border-2 border-dashed border-cyan-500/20 rounded-full animate-spin [animation-duration:40s]"></div>
+                <div class="absolute inset-8 border-2 border-dashed border-purple-500/20 rounded-full animate-spin [animation-duration:25s] [animation-direction:reverse]"></div>
                 
                 <!-- Main Glass Card -->
-                <div class="absolute inset-16 bg-[#0b132b]/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col justify-between" dir="ltr">
+                <div class="absolute inset-16 bg-[#0b132b]/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col justify-between" dir="ltr"
+                     x-data="{
+                        snippets: [
+                            { file: 'codeflow.config.js', code: 'const codeFlow = {\n  engine: \'Laravel 12\',\n  styling: \'Tailwind CSS\',\n  reactiveUI: \'Alpine.js\',\n  focus: [\'Speed\', \'Aesthetics\']\n};\nexport default codeFlow;' },
+                            { file: 'routes/web.php', code: '// routes/web.php\nRoute::get(\'/api/projects\', function () {\n  return Project::with(\'plans\')\n    ->latest()\n    ->get();\n});' },
+                            { file: 'pricing.js', code: '// Alpine.js Loader\nAlpine.data(\'pricing\', () => ({\n  plans: [],\n  addPlan(plan) {\n    this.plans.push(plan);\n  }\n}));' },
+                            { file: 'theme.css', code: '/* Tailwind Theme */\n@theme {\n  --color-primary: #0A0F1D;\n  --color-cyan: #06B6D4;\n  --color-purple: #A855F7;\n}' }
+                        ],
+                        currentIdx: 0,
+                        displayedText: '',
+                        typingSpeed: 30,
+                        eraseSpeed: 15,
+                        delayBeforeErase: 3000,
+                        delayBeforeType: 500,
+                        
+                        init() {
+                            this.type();
+                        },
+                        
+                        type() {
+                            let text = this.snippets[this.currentIdx].code;
+                            let i = 0;
+                            let timer = setInterval(() => {
+                                if (i < text.length) {
+                                    this.displayedText += text.charAt(i);
+                                    i++;
+                                } else {
+                                    clearInterval(timer);
+                                    setTimeout(() => this.erase(), this.delayBeforeErase);
+                                }
+                            }, this.typingSpeed);
+                        },
+                        
+                        erase() {
+                            let timer = setInterval(() => {
+                                if (this.displayedText.length > 0) {
+                                    this.displayedText = this.displayedText.substring(0, this.displayedText.length - 1);
+                                } else {
+                                    clearInterval(timer);
+                                    this.currentIdx = (this.currentIdx + 1) % this.snippets.length;
+                                    setTimeout(() => this.type(), this.delayBeforeType);
+                                }
+                            }, this.eraseSpeed);
+                        }
+                     }">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-1.5">
                             <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
                             <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
                             <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
                         </div>
-                        <span class="text-xs text-slate-500 font-mono">codeflow.config.json</span>
+                        <span class="text-xs text-slate-500 font-mono" x-text="snippets[currentIdx].file"></span>
                     </div>
 
-                    <div class="space-y-3 font-mono text-[11px] text-cyan-400 mt-4 leading-relaxed">
-                        <p><span class="text-purple-400">const</span> codeFlow = {</p>
-                        <p class="ps-4">engine: <span class="text-amber-300">"Laravel 12"</span>,</p>
-                        <p class="ps-4">styling: <span class="text-amber-300">"Tailwind CSS v4"</span>,</p>
-                        <p class="ps-4">reactiveUI: <span class="text-amber-300">"Alpine.js"</span>,</p>
-                        <p class="ps-4">focus: [<span class="text-amber-300">"Speed"</span>, <span class="text-amber-300">"Premium Aesthetics"</span>]</p>
-                        <p>};</p>
-                        <p><span class="text-purple-400">export default</span> codeFlow;</p>
+                    <!-- Fixed height typewriter area to prevent layout shifting -->
+                    <div class="font-mono text-[11px] text-cyan-400 mt-4 h-36 overflow-hidden ltr text-left">
+                        <pre class="whitespace-pre-wrap break-all text-cyan-400/90 leading-relaxed font-mono select-none inline" x-text="displayedText"></pre><span class="inline-block w-1.5 h-3.5 bg-cyan-400/95 animate-pulse ml-1 align-middle"></span>
                     </div>
 
                     <!-- Glowing Tag -->
@@ -97,7 +136,7 @@
 <section id="services" class="py-24 border-t border-slate-900/60 relative">
     <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div data-aos="fade-up" class="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">{{ __('Capabilities') }}</h2>
             <p class="text-3xl sm:text-4xl font-bold text-white">{{ __('Engineered for Digital Performance') }}</p>
             <p class="text-slate-500 text-sm">{{ __('We combine bleeding-edge technology with high-end designs to build products that command attention.') }}</p>
@@ -106,7 +145,7 @@
         <!-- Service Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Web Development Card -->
-            <div class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-cyan-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div data-aos="fade-up" data-aos-delay="100" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-cyan-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
@@ -119,7 +158,7 @@
             </div>
 
             <!-- Custom Systems Card -->
-            <div class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-purple-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div data-aos="fade-up" data-aos-delay="200" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-purple-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
@@ -132,7 +171,7 @@
             </div>
 
             <!-- Mobile Apps Card -->
-            <div class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-blue-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div data-aos="fade-up" data-aos-delay="300" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-blue-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -151,7 +190,7 @@
 <section id="projects" class="py-24 border-t border-slate-900/60 relative">
     <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div class="space-y-4">
                 <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">{{ __('Our Work') }}</h2>
                 <p class="text-3xl sm:text-4xl font-bold text-white">{{ __('The Project Showcases') }}</p>
@@ -176,7 +215,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($projects as $project)
                     <!-- Project Card -->
-                    <article class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col justify-between"
+                    <article data-aos="fade-up" data-aos-delay="{{ (($loop->index % 3) + 1) * 100 }}" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col justify-between"
                              x-data="{ rotateX: 0, rotateY: 0 }"
                              @mousemove="
                                 const card = $el.getBoundingClientRect();
@@ -258,7 +297,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <!-- Left Info Block -->
-            <div class="lg:col-span-5 space-y-8">
+            <div data-aos="fade-right" class="lg:col-span-5 space-y-8">
                 <div class="space-y-4">
                     <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">{{ __('Connect') }}</h2>
                     <p class="text-3xl sm:text-4xl font-bold text-white leading-tight">{{ __('Let\'s Create Your Digital Product') }}</p>
@@ -278,6 +317,16 @@
                     </div>
 
                     <div class="flex items-center gap-4 p-4 rounded-2xl bg-[#0b132b]/20 border border-slate-900">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-500 block">{{ __('Company Phone') }}</span>
+                            <a href="tel:+201505512444" class="text-sm font-semibold text-white hover:text-emerald-400 transition-colors" dir="ltr">+201505512444</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-[#0b132b]/20 border border-slate-900">
                         <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         </div>
@@ -290,7 +339,7 @@
             </div>
 
             <!-- Right Contact Form Card -->
-            <div class="lg:col-span-7 bg-[#0b132b]/30 backdrop-blur-xl border border-slate-900 rounded-3xl p-8 shadow-xl">
+            <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-7 bg-[#0b132b]/30 backdrop-blur-xl border border-slate-900 rounded-3xl p-8 shadow-xl">
                 <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6">
                     @csrf
                     

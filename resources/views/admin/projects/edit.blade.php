@@ -27,14 +27,11 @@
                     this.imageUrl = URL.createObjectURL(file);
                 }
             },
-            existingImages: @json($project->images ?? []),
+            existingImages: {{ json_encode($project->images ?? []) }},
             removeExistingImage(img) {
                 this.existingImages = this.existingImages.filter(i => i !== img);
             },
-            plans: @json(array_map(function($plan) {
-                $plan['features_input'] = implode(', ', $plan['features'] ?? []);
-                return $plan;
-            }, $project->plans ?? [])),
+            plans: {{ json_encode($plans) }},
             addPlan() {
                 this.plans.push({
                     name: '',

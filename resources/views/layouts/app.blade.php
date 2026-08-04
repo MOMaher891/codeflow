@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', __('CodeFlow - Premium Software House & Development Portfolio'))</title>
+    <link rel="shortcut icon" href="{{ asset('storage/codeflowlogo.png') }}" type="image/x-icon">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,9 @@
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- AOS (Animate on Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -50,6 +54,7 @@
             :class="scrolled ? 'py-4 shadow-2xl border-slate-800/80 bg-[#060a15]/90' : 'py-6'">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
             <a href="{{ url('/') }}" class="group flex items-center gap-2.5 font-bold text-2xl tracking-tight text-white">
+                <img src="{{ asset('storage/codeflowlogo.png') }}" alt="CodeFlow Logo" class="h-8 w-auto">
                 <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-500 group-hover:to-cyan-400 transition-all duration-500">{{ __('CodeFlow') }}</span>
             </a>
             
@@ -119,7 +124,10 @@
     <footer class="border-t border-slate-900 bg-[#050811] py-12 z-10">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-                <a href="#" class="font-bold text-xl bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">{{ __('CodeFlow') }}</a>
+                <a href="#" class="flex items-center gap-2 font-bold text-xl bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                    <img src="{{ asset('storage/codeflowlogo.png') }}" alt="CodeFlow Logo" class="h-6 w-auto">
+                    <span>{{ __('CodeFlow') }}</span>
+                </a>
                 <p class="text-slate-500 text-sm mt-2">{{ __('© :year CodeFlow. All rights reserved. Crafting stellar digital experiences.', ['year' => date('Y')]) }}</p>
             </div>
             <div class="flex items-center gap-6 text-sm text-slate-400">
@@ -132,5 +140,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- AOS (Animate on Scroll) JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 50,
+                delay: 50
+            });
+        });
+    </script>
 </body>
 </html>
