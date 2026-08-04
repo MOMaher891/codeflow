@@ -3,8 +3,135 @@
 @section('title', __('CodeFlow - Premium Software House & Development Portfolio'))
 
 @section('content')
+<style>
+    .hero-watermark-container {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+        overflow: hidden;
+    }
+    .hero-watermark-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.05;
+        filter: blur(4px) brightness(0.8);
+        transition: opacity 0.5s ease;
+    }
+    .hero-vignette-y {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, #0A0F1D 0%, transparent 15%, transparent 85%, #0A0F1D 100%);
+    }
+    .hero-vignette-x {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #0A0F1D 0%, transparent 15%, transparent 85%, #0A0F1D 100%);
+        opacity: 0.95;
+    }
+    
+    /* Features Row Styling */
+    .features-grid {
+        text-align: center !important;
+    }
+    .features-grid > div {
+        text-align: center !important;
+    }
+    @media (min-width: 1024px) {
+        html[dir="ltr"] .features-grid,
+        html[dir="ltr"] .features-grid > div {
+            text-align: left !important;
+        }
+        html[dir="rtl"] .features-grid,
+        html[dir="rtl"] .features-grid > div {
+            text-align: right !important;
+        }
+    }
+
+    /* Interactive Card Mockup Styling */
+    .hero-mockup-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    .hero-mockup-ring-1 {
+        position: absolute;
+        inset: 0;
+        border: 2px dashed rgba(6, 182, 212, 0.2);
+        border-radius: 9999px;
+        animation: spin-clockwise 40s linear infinite;
+    }
+    .hero-mockup-ring-2 {
+        position: absolute;
+        inset: 2rem;
+        border: 2px dashed rgba(168, 85, 247, 0.2);
+        border-radius: 9999px;
+        animation: spin-counterclockwise 25s linear infinite;
+    }
+    .hero-mockup-card {
+        position: absolute;
+        inset: 4rem;
+        background-color: rgba(11, 19, 43, 0.4);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid #1E293B;
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    @keyframes spin-clockwise {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    @keyframes spin-counterclockwise {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+    }
+
+    @media (max-width: 768px) {
+        .hero-watermark-img {
+            opacity: 0.025;
+            filter: blur(3px) brightness(0.7);
+        }
+        .hero-mockup-ring-2 {
+            inset: 1.5rem;
+        }
+        .hero-mockup-card {
+            inset: 3rem;
+            padding: 1rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .hero-mockup-ring-2 {
+            inset: 1rem;
+        }
+        .hero-mockup-card {
+            inset: 2rem;
+            padding: 0.75rem;
+        }
+    }
+</style>
+
 <!-- Hero Section -->
 <section id="hero" class="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Background Image Watermark -->
+    <div class="hero-watermark-container">
+        <img src="{{ asset('storage/codeflow.png') }}" 
+             alt="" 
+             class="hero-watermark-img">
+        <!-- Vignette gradient overlays to melt edges into the background -->
+        <div class="hero-vignette-y"></div>
+        <div class="hero-vignette-x"></div>
+    </div>
+
     <!-- Ambient glowing backgrounds -->
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[40vw] max-w-[800px] rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-600/10 blur-[130px] pointer-events-none"></div>
 
@@ -38,31 +165,31 @@
             </div>
             
             <!-- Features Row -->
-            <div data-aos="fade-up" data-aos-delay="400" class="pt-8 border-t border-slate-900 grid grid-cols-3 gap-6 max-w-md mx-auto lg:ltr:mr-auto lg:ltr:ml-0 lg:rtl:ml-auto lg:rtl:mr-0 ltr:text-left rtl:text-right">
+            <div data-aos="fade-up" data-aos-delay="400" class="pt-8 border-t border-slate-900 grid grid-cols-3 gap-3 sm:gap-6 max-w-md mx-auto lg:ltr:mr-auto lg:ltr:ml-0 lg:rtl:ml-auto lg:rtl:mr-0 features-grid">
                 <div>
-                    <h4 class="text-xl font-bold text-white">99%</h4>
-                    <p class="text-xs text-slate-500 mt-1">{{ __('Client Satisfaction') }}</p>
+                    <h4 class="text-xl sm:text-2xl font-bold text-white">99%</h4>
+                    <p class="text-[10px] sm:text-xs text-slate-500 mt-1 leading-snug">{{ __('Client Satisfaction') }}</p>
                 </div>
                 <div>
-                    <h4 class="text-xl font-bold text-white">40+</h4>
-                    <p class="text-xs text-slate-500 mt-1">{{ __('Projects Delivered') }}</p>
+                    <h4 class="text-xl sm:text-2xl font-bold text-white">40+</h4>
+                    <p class="text-[10px] sm:text-xs text-slate-500 mt-1 leading-snug">{{ __('Projects Delivered') }}</p>
                 </div>
                 <div>
-                    <h4 class="text-xl font-bold text-white">5x</h4>
-                    <p class="text-xs text-slate-500 mt-1">{{ __('Performance Index') }}</p>
+                    <h4 class="text-xl sm:text-2xl font-bold text-white">5x</h4>
+                    <p class="text-[10px] sm:text-xs text-slate-500 mt-1 leading-snug">{{ __('Performance Index') }}</p>
                 </div>
             </div>
         </div>
 
         <!-- Right Column: Interactive Tech Visual Mockup -->
-        <div data-aos="zoom-in-left" data-aos-delay="350" class="lg:col-span-5 hidden lg:block relative">
-            <div class="relative w-full aspect-square max-w-[450px] mx-auto">
+        <div class="lg:col-span-5 block relative mt-12 lg:mt-0">
+            <div class="hero-mockup-wrapper">
                 <!-- Glowing Outer Rings (Dashed to make rotation visible) -->
-                <div class="absolute inset-0 border-2 border-dashed border-cyan-500/20 rounded-full animate-spin [animation-duration:40s]"></div>
-                <div class="absolute inset-8 border-2 border-dashed border-purple-500/20 rounded-full animate-spin [animation-duration:25s] [animation-direction:reverse]"></div>
+                <div class="hero-mockup-ring-1"></div>
+                <div class="hero-mockup-ring-2"></div>
                 
                 <!-- Main Glass Card -->
-                <div class="absolute inset-16 bg-[#0b132b]/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col justify-between" dir="ltr"
+                <div class="hero-mockup-card" dir="ltr"
                      x-data="{
                         snippets: [
                             { file: 'codeflow.config.js', code: 'const codeFlow = {\n  engine: \'Laravel 12\',\n  styling: \'Tailwind CSS\',\n  reactiveUI: \'Alpine.js\',\n  focus: [\'Speed\', \'Aesthetics\']\n};\nexport default codeFlow;' },
