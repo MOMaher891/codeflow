@@ -16,7 +16,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.05;
+        opacity: 0.1;
         filter: blur(4px) brightness(0.8);
         transition: opacity 0.5s ease;
     }
