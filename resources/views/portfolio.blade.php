@@ -145,7 +145,7 @@
         <!-- Service Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Web Development Card -->
-            <div data-aos="fade-up" data-aos-delay="100" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-cyan-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div data-aos="fade-up" data-aos-delay="100" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-cyan-500/30 rounded-3xl p-6 sm:p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
@@ -158,7 +158,7 @@
             </div>
 
             <!-- Custom Systems Card -->
-            <div data-aos="fade-up" data-aos-delay="200" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-purple-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div data-aos="fade-up" data-aos-delay="200" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-purple-500/30 rounded-3xl p-6 sm:p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
@@ -171,7 +171,7 @@
             </div>
 
             <!-- Mobile Apps Card -->
-            <div data-aos="fade-up" data-aos-delay="300" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-blue-500/30 rounded-3xl p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
+            <div data-aos="fade-up" data-aos-delay="300" class="group relative bg-[#0b132b]/25 border border-slate-900 hover:border-blue-500/30 rounded-3xl p-6 sm:p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -289,6 +289,132 @@
     </div>
 </section>
 
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-24 border-t border-slate-900/60 relative">
+    <!-- Ambient background glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[25vw] max-w-[600px] rounded-full bg-gradient-to-r from-purple-500/5 to-cyan-500/5 blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Section Header -->
+        <div data-aos="fade-up" class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-widest">{{ __('What Our Clients Say') }}</h2>
+            <p class="text-3xl sm:text-4xl font-bold text-white">{{ __('Trusted by Business Leaders') }}</p>
+            <p class="text-slate-500 text-sm">{{ __('Explore real feedback from enterprise leaders and SaaS founders who built their systems with CodeFlow.') }}</p>
+        </div>
+
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div data-aos="fade-up" data-aos-delay="100" class="group relative bg-[#0b132b]/25 border border-slate-800 hover:border-cyan-500/30 rounded-3xl p-6 sm:p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
+                
+                <div>
+                    <!-- Card Top: Service Tag & Stars -->
+                    <div class="flex flex-row items-center justify-between gap-4 mb-6">
+                        <!-- Service Tag -->
+                        <span class="px-2.5 py-1 rounded text-[9px] font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/10 shrink-0">{{ __('Enterprise ERP') }}</span>
+                        
+                        <!-- Rating Stars -->
+                        <div class="flex items-center gap-0.5 text-amber-400 shrink-0">
+                            @for($i = 0; $i < 5; $i++)
+                                <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            @endfor
+                        </div>
+                    </div>
+
+                    <!-- Quote Text -->
+                    <p class="text-slate-300 text-sm leading-relaxed mb-8 italic relative z-10">
+                        "{{ __('We contracted CodeFlow to develop an integrated ERP system for our warehouses and fleet management. The result was amazing; speed, stability, and outstanding support allowed us to automate operations completely.') }}"
+                    </p>
+                </div>
+
+                <!-- Client Profile -->
+                <div class="flex items-center gap-4 pt-6 border-t border-slate-800/60 mt-auto">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-sm shrink-0 select-none shadow-lg shadow-cyan-500/10">
+                        TM
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">{{ __('Eng. Tarek Mansour') }}</h4>
+                        <span class="text-[10px] font-semibold text-slate-500 block mt-0.5">{{ __('CTO, Al-Majd Logistics') }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div data-aos="fade-up" data-aos-delay="200" class="group relative bg-[#0b132b]/25 border border-slate-800 hover:border-purple-500/30 rounded-3xl p-6 sm:p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
+                
+                <div>
+                    <!-- Card Top: Service Tag & Stars -->
+                    <div class="flex flex-row items-center justify-between gap-4 mb-6">
+                        <!-- Service Tag -->
+                        <span class="px-2.5 py-1 rounded text-[9px] font-bold uppercase tracking-wider bg-purple-500/10 text-purple-400 border border-purple-500/10 shrink-0">{{ __('SaaS Platform & App') }}</span>
+                        
+                        <!-- Rating Stars -->
+                        <div class="flex items-center gap-0.5 text-amber-400 shrink-0">
+                            @for($i = 0; $i < 5; $i++)
+                                <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            @endfor
+                        </div>
+                    </div>
+
+                    <!-- Quote Text -->
+                    <p class="text-slate-300 text-sm leading-relaxed mb-8 italic relative z-10">
+                        "{{ __('The mobile app and cloud platform developed by CodeFlow exceeded expectations. The UI/UX design is luxurious and attractive, and user experience is very smooth. Great success partners!') }}"
+                    </p>
+                </div>
+
+                <!-- Client Profile -->
+                <div class="flex items-center gap-4 pt-6 border-t border-slate-800/60 mt-auto">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-400 via-pink-500 to-red-500 flex items-center justify-center text-white font-extrabold text-sm shrink-0 select-none shadow-lg shadow-purple-500/10">
+                        SA
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white group-hover:text-purple-400 transition-colors">{{ __('Dr. Sarah Al-Otaibi') }}</h4>
+                        <span class="text-[10px] font-semibold text-slate-500 block mt-0.5">{{ __('CEO, Edura EdTech') }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div data-aos="fade-up" data-aos-delay="300" class="group relative bg-[#0b132b]/25 border border-slate-800 hover:border-emerald-500/30 rounded-3xl p-6 sm:p-8 hover:bg-[#0b132b]/40 shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
+                
+                <div>
+                    <!-- Card Top: Service Tag & Stars -->
+                    <div class="flex flex-row items-center justify-between gap-4 mb-6">
+                        <!-- Service Tag -->
+                        <span class="px-2.5 py-1 rounded text-[9px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/10 shrink-0">{{ __('Fintech Gateway') }}</span>
+                        
+                        <!-- Rating Stars -->
+                        <div class="flex items-center gap-0.5 text-amber-400 shrink-0">
+                            @for($i = 0; $i < 5; $i++)
+                                <svg class="w-3.5 h-3.5 fill-amber-400 text-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            @endfor
+                        </div>
+                    </div>
+
+                    <!-- Quote Text -->
+                    <p class="text-slate-300 text-sm leading-relaxed mb-8 italic relative z-10">
+                        "{{ __('Infinite precision in code engineering and a very strong security system. Security and transaction speed were our priorities, and CodeFlow delivered an integrated software solution matching the highest financial standards.') }}"
+                    </p>
+                </div>
+
+                <!-- Client Profile -->
+                <div class="flex items-center gap-4 pt-6 border-t border-slate-800/60 mt-auto">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-400 via-teal-500 to-cyan-500 flex items-center justify-center text-white font-extrabold text-sm shrink-0 select-none shadow-lg shadow-emerald-500/10">
+                        AM
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">{{ __('Ahmed Al-Mutairi') }}</h4>
+                        <span class="text-[10px] font-semibold text-slate-500 block mt-0.5">{{ __('Founder, PayFlow Fintech') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Contact Form Section -->
 <section id="contact" class="py-24 border-t border-slate-900/60 relative">
     <!-- background glow -->
@@ -339,7 +465,7 @@
             </div>
 
             <!-- Right Contact Form Card -->
-            <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-7 bg-[#0b132b]/30 backdrop-blur-xl border border-slate-900 rounded-3xl p-8 shadow-xl">
+            <div data-aos="fade-left" data-aos-delay="200" class="lg:col-span-7 bg-[#0b132b]/30 backdrop-blur-xl border border-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl">
                 <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6">
                     @csrf
                     

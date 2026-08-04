@@ -201,7 +201,7 @@
                             $waUrl = "https://wa.me/" . $cleanPhone . "?text=" . urlencode($waMessage);
                         @endphp
                         
-                        <div data-aos="fade-up" data-aos-delay="{{ (($loop->index % 3) + 1) * 100 }}" class="group relative rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 {{ $isPopular ? 'bg-slate-900/60 border-2 border-cyan-400 shadow-2xl scale-[1.03] lg:scale-[1.05] z-10' : 'bg-slate-900/20 border border-slate-800/80 hover:border-slate-700' }}">
+                        <div data-aos="fade-up" data-aos-delay="{{ (($loop->index % 3) + 1) * 100 }}" class="group relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 {{ $isPopular ? 'bg-slate-900/60 border-2 border-cyan-400 shadow-2xl scale-[1.03] lg:scale-[1.05] z-10' : 'bg-slate-900/20 border border-slate-800/80 hover:border-slate-700' }}">
                             
                             @if($isPopular)
                                 <!-- Glow header tag -->
